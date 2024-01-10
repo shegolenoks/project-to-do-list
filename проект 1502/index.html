@@ -9,9 +9,16 @@
 </head>
 
 <body>
+    <div class="timer" id="timer">
+        <h2 class="timer-title">Отдых</h2>
+        <h1 class="timer-value">4 мин</h1>
+    </div>
     <div class="container">
         <div class="todo-app">
-            <h2>To do list <img src="images/icon.png"></h2>
+            <header>
+                <h2>To do list <img src="images/icon.png"></h2>
+                <button class="pomidor-button" id="pomidor-button">Помидор</button>
+            </header>
             <div class="row">
                 <input type="text" id="input-box" placeholder="Добавьте задачу">
                 <button onclick="addTask()">Добавить</button>
@@ -21,6 +28,7 @@
                 <li>Task 2</li>
                 <li>Task 3</li> -->
             </ul>
+        </div>
             <script src="script.js "></script>
 </body>
 
