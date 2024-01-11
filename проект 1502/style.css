@@ -21,7 +21,7 @@ body{
     border-radius: 10px;
 }
 .timer-title{
-    color: green;
+    color: red;
     font-size: 60px;
 }
 .timer-value{

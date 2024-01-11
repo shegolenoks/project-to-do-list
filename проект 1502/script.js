@@ -2,7 +2,11 @@ const inputbox = document.getElementById("input-box");
 const listcontainer = document.getElementById("list-container");
 const button = document.getElementById('pomidor-button');
 const timer = document.getElementById('timer');
+const timerTitle = document.getElementById('timer-title');
+const timerValue =document.getElementById('timer-value');
 let isPomidorShowing = false;
+let isPomidorRed = true;
+let i = 25;
 
 function addTask() {
     if (inputbox.value === '') {
@@ -39,6 +43,11 @@ showtask();
 
 //
 const showPomidor = (e) => {
+    i = 25;
+    isPomidorRed = true;
+    timerValue.innerHTML = `${i} мин`;
+    timerTitle.style.color = "red";
+    timerTitle.innerHTML = "Работа";
     if (isPomidorShowing)
     {
         timer.style.display = "none";
@@ -54,7 +63,47 @@ const showPomidor = (e) => {
         button.style.border = '#000 solid 1px';
         button.style.color = '#000';
         isPomidorShowing = !isPomidorShowing;
-        //какой-то метод
+        pomidorRed();
     }
 }
+const pomidorRed = () => {
+    setTimeout(setValue, 1000);
+}
+const pomidorGreen = () => {
+    setTimeout(setValue, 1000);
+}
+const setValue = () => {
+    if (!isPomidorShowing) return;
+
+    timerValue.innerHTML = `${i} мин`;
+    i--;
+    if (i == -1)
+    {
+        if (isPomidorRed)
+        {
+            timerTitle.style.color = "green";
+            timerTitle.innerHTML = "Отдых";
+            i = 5;
+            pomidorGreen();
+            isPomidorRed = false;
+        }
+        else
+        {
+            timerTitle.style.color = "red";
+            timerTitle.innerHTML = "Работа";
+            i = 25;
+            pomidorRed();
+            isPomidorRed = true;
+        }
+        timerValue.innerHTML = `${i} мин`;
+    }
+    else
+    {
+        if (isPomidorRed)
+            pomidorRed();
+        else
+            pomidorGreen();
+    }
+}
+
 button.addEventListener('click', showPomidor);
